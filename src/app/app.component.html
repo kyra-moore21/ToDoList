@@ -13,25 +13,33 @@
   </li>
   }
   </ol>
-    
-    <label for="task">Enter new Task:</label>
-    <input id="task" type="text" [(ngModel)]="formInput.task" />
+  <div class="form-container">
+    <div>
+    <span><label for="task">Enter new Task: </label>
+    <input id="task" type="text" [(ngModel)]="formInput.task" /></span>
+  </div>
   
     <label for="duration">How many hours do you estimate?(ex. 1, 0.75, 0.25) </label>
     <input id="duration" type="text" [(ngModel)]="formInput.duration" />
    
   <p>What is the priority?</p>
-  <fieldset id="group" [(ngModel)]="formInput.priority">
-  <label for="low">Low</label>
-  <input type="radio" id="low" name="group">
-  <label for="normal">Normal</label>
-  <input type="radio" id="normal"  name="group">
-  <label for="high">High</label>
-  <input type="radio" id="high"  name="group">
+  <fieldset class="fieldset" id="group" [(ngModel)]="formInput.priority">
+    <div>      
+      <input type="radio" id="low" name="group">
+      <label for="low">Low</label>
+    </div>
+    <div>
+      <input type="radio" id="normal"  name="group">
+      <label for="normal">Normal</label>
+    </div>
+    <div>
+      <input type="radio" id="high"  name="group">
+      <label for="high">High</label>
+    </div>
 </fieldset>
   
-  <button type="submit" (click)="AddTask()">Submit</button>
-
+  <button class="add" type="submit" (click)="AddTask()">Add</button>
+</div>
  
 
 </div>
