@@ -1,45 +1,61 @@
-<div class="container">
-  <h1>Networking To Do List</h1>
-  <h3>Get to your dreams faster.</h3>
-  <ol>
+<div class="container col-8 container-custom">
+  <div class="row pb-2 text-center">
+    <h1>Networking To Do List</h1>
+  </div>
+  <div class="row pb-4 text-center">
+
+    <h3>Get to your dreams faster.</h3>
+  </div>
+  <div class="row">
+  <ol class="list-group">
   @for (t of Tasks; track $index) {
-    <li class="il" [class.completed]="t.completed">
+    <li class="list-group-item d-flex d-flex justify-content-between align-items-center ">
+      <div class="d-flex align-items-center" [class.completed]="t.completed">
       @if(t.completed == false){
-      <button class="complete" (click)="CheckOffTask(t)">complete</button>
+      <button class="btn complete me-2" (click)="CheckOffTask(t)">complete</button>
     }
-    {{t.task}} ({{t.duration | number : '1.2'}}hr) 
-    @if(t.priority == "high" || t.priority == "low"){  <span [class.high]="t.priority == 'high'" [class.low]="t.priority == 'low'">{{t.priority}}</span>}
-    <button class="delete" (click)="DeleteTask(t)">X</button>
+     {{t.task}} ({{t.duration | number : '1.2'}}hr) 
+    @if(t.priority == "high" || t.priority == "low"){  <span [class.high]="t.priority == 'high'" [class.low]="t.priority == 'low'"> {{t.priority}} </span>}
+  </div>
+    <button class="btn delete" (click)="DeleteTask(t)">X</button>
   </li>
   }
   </ol>
-  <div class="form-container">
-    <div>
-    <span><label for="task">Enter new Task: </label>
-    <input id="task" type="text" [(ngModel)]="formInput.task" /></span>
   </div>
-  
+  <div class="row pt-5">
+    <h3>Add a New Task</h3>
+  </div>
+  <div class="row">
+  <div class="form-group col-6">
+    
+    <span><label for="task">Enter new Task: </label>
+    <input id="task" class="form-control" type="text" [(ngModel)]="formInput.task" /></span>
+  </div>
+  </div>
+  <div class="row">
+   <div class="form-group col-6">
     <label for="duration">How many hours do you estimate?(ex. 1, 0.75, 0.25) </label>
-    <input id="duration" type="text" [(ngModel)]="formInput.duration" />
-   
+    <input id="duration" class="form-control" type="text" [(ngModel)]="formInput.duration" />
+  </div>
+</div>
+<div class="row form-check col-6" id="group" [(ngModel)]="formInput.priority">
   <p>What is the priority?</p>
-  <fieldset class="fieldset" id="group" [(ngModel)]="formInput.priority">
     <div>      
-      <input type="radio" id="low" name="group">
-      <label for="low">Low</label>
+      <input class="form-check-input ml-5" type="radio" id="low" name="group" checked>
+      <label class="form-check-label" for="low">Low</label>
     </div>
     <div>
-      <input type="radio" id="normal"  name="group">
-      <label for="normal">Normal</label>
+      <input class="form-check-input" type="radio" id="normal"  name="group">
+      <label class="form-check-label" for="normal">Normal</label>
     </div>
     <div>
-      <input type="radio" id="high"  name="group">
-      <label for="high">High</label>
+      <input class="form-check-input" type="radio" id="high"  name="group">
+      <label class="form-check-label" for="high">High</label>
     </div>
-</fieldset>
-  
-  <button class="add" type="submit" (click)="AddTask()">Add</button>
 </div>
- 
+<div class="row col-6 text-center">
+  <button class="btn add" type="submit" (click)="AddTask()">Add</button>
+</div>
+</div>
 
-</div>
+
