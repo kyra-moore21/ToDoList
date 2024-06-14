@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 .completed{
     text-decoration: line-through;
 }
 
+.rounded {
+    border-radius:.25rem!important
+}
 .container-custom{
 
-    font-family: "Open Sans", sans-serif;
-    font-weight: 300;
+    
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     background-color: #eee;
     

@@ -12,6 +12,7 @@ import { Todo } from './models/todo';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  filter:string = "";
   title = 'AngularToDo';
   Tasks:Todo[] = [
     {
@@ -64,10 +65,33 @@ export class AppComponent {
     this.Tasks.push(NewTask);
   }
   CheckOffTask(t:Todo): void{
-    t.completed = true;
+    t.completed = !t.completed;
   }
   DeleteTask(t:Todo):void{
     let index: number = this.Tasks.findIndex(p => p == t);
     this.Tasks.splice(index, 1);
+  }
+  IsListCompleted():boolean {
+    //No items
+    if(this.Tasks.length == 0){
+      return true;
+    }
+    //any incomplete
+    let allComplete:boolean = true;
+    this.Tasks.forEach((t:Todo) =>{
+      if(t.completed == false){
+        allComplete = false;
+      }
+    });
+    //all complete
+    return allComplete;
+  }
+
+  Search():Todo[] {
+    if(this.filter == ""){
+      return this.Tasks;
+    } else {
+      return this.Tasks.filter((t:Todo) => t.task.toLowerCase().includes(this.filter.toLocaleLowerCase()));
+    }
   }
 }
